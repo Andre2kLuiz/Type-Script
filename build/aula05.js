@@ -1,0 +1,10 @@
+"use strict";
+let vTest = [];
+vTest.push("Andre");
+vTest.push(10);
+vTest.push(false);
+let cursos = ["javascript", "TypeScript", "C++"];
+let valores = [10, 20, 30];
+cursos.push("Arduino");
+valores.push(50);
+console.log(cursos, valores, vTest);
