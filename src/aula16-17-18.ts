@@ -10,6 +10,18 @@ class Computador{
         this.cpu = cpu
         this.ligado = ligado
     }
+
+    info():void{
+        console.log(`Nome: ${this.nome} \nRan: ${this.ram} \nCpu: ${this.cpu} \nLigado: ${this.ligado?"sim":"não"} \n---------------------`)
+    }
+
+    ligar():void {
+        this.ligado = true
+    }
+
+    desligado():void {
+        this.ligado = false
+    }
 }
 
 //instaciar
@@ -17,7 +29,11 @@ const comp1 = new Computador("Computador1", 8, 2.4, true);
 const comp2 = new Computador("Computador2", 4, 2.4, true);
 const comp3 = new Computador("Computador3", 32, 5.4, false);
 
+comp1.desligado()
+comp2.desligado()
+comp3.ligar()
 
-console.log(`Nome: ${comp1.nome} \nRan: ${comp1.ram} \nCpu: ${comp1.cpu} \nLigado: ${comp1.ligado}`)
-console.log(comp2)
-console.log(comp3)
+
+console.log(comp1.info())
+console.log(comp2.info())
+console.log(comp3.info())
