@@ -26,11 +26,19 @@ class Conta {
     }
 
     protected deposito(valor:number){
+        if(valor < 0){
+            console.log("Valor invalido")
+            return
+        }
         this.saldoConta += valor
     }
 
     protected saque(valor:number){
-        if(valor > this.saldoConta){
+        if(valor < 0){
+            console.log("Valor invalido")
+            return
+        }
+        if(valor < this.saldoConta){
             this.saldoConta-=valor
         }else{
             console.log(`Saldo insuficiente!!!`)
@@ -63,6 +71,14 @@ class PessoaFisica extends Conta {
             super.deposito(valor)
         }
     }
+
+    public saque(valor:number){
+        if(valor > 1000 || valor <= 0){
+            console.log("Valor incorreto impossivel sacar")
+        }else{
+            super.saque(valor)
+        }
+    }
 }
 
 class PessoaJuridica extends Conta {
@@ -85,6 +101,14 @@ class PessoaJuridica extends Conta {
             super.deposito(valor)
         }
     }
+
+    public saque(valor:number){
+        if(valor > 10000 || valor <= 0){
+            console.log("Valor incorreto impossivel sacar")
+        }else{
+            super.saque(valor)
+        }
+    }
 }
 
 const conta1 = new PessoaFisica(123456789, "Andre")
@@ -95,6 +119,13 @@ console.log(conta1.saldo())
 
 conta2.deposito(8000)
 console.log(conta2.saldo())
+
+conta1.saque(1000)
+console.log(conta1.saldo())
+
+conta2.saque(7000)
+console.log(conta2.saldo())
+
 
 conta1.info()
 conta2.info()
