@@ -21,8 +21,12 @@ class Conta {
         console.log(`Titular:${this.titular} \nNumero:${this.getNumero()}`)
     }
 
-    public saldo():number{
+    protected get saldo():number{
         return this.saldoConta
+    }
+
+    protected set saldo(saldoConta:number){
+        this.saldoConta = saldoConta
     }
 
     protected deposito(valor:number){
@@ -79,6 +83,10 @@ class PessoaFisica extends Conta {
             super.saque(valor)
         }
     }
+
+    public saldoEmConta():number{
+        return this.saldo
+    }
 }
 
 class PessoaJuridica extends Conta {
@@ -109,23 +117,26 @@ class PessoaJuridica extends Conta {
             super.saque(valor)
         }
     }
+
+    public saldoEmConta():number{
+        return this.saldo
+    }
 }
 
 const conta1 = new PessoaFisica(123456789, "Andre")
 const conta2 = new PessoaJuridica(987654321, "Luiz")
 
 conta1.deposito(1500)
-console.log(conta1.saldo())
+console.log(conta1.saldoEmConta())
 
 conta2.deposito(8000)
-console.log(conta2.saldo())
+console.log(conta2.saldoEmConta())
 
 conta1.saque(1000)
-console.log(conta1.saldo())
+console.log(conta1.saldoEmConta())
 
 conta2.saque(7000)
-console.log(conta2.saldo())
-
+console.log(conta2.saldoEmConta())
 
 conta1.info()
 conta2.info()
