@@ -2,8 +2,8 @@
 //Private: Acessado somente na sua própria classe
 //Protected: Acessado domente na sua própria classe e nas classes filho
 
-class Conta {
-    private numero:number
+abstract class Conta {
+    private readonly numero:number
     protected titular:string
     private saldoConta:number
 
